@@ -1,0 +1,186 @@
+
+package project.euler;
+
+
+import java.util.ArrayList;
+public class ProjectEuler {
+
+
+    public static void main(String[] args) {
+        //Number 1- Multiples
+        int sum = 0;
+        for (int x = 3; x<1000; x++) {
+            if (x%3 == 0 || x%5 ==0) {
+                sum = sum + x;
+            }
+        }
+          System.out.println(sum);
+        
+        //Number 2- Fibbonacci
+        int sum = 0;
+        int a = 1;
+        int x = 2;
+        int b;
+        while (x < 4000000) {
+            b = x;
+            x = x + a;
+            a = b;
+            if (x%2 == 0) {
+                sum = sum + x;
+            }
+        }
+        sum = sum + 2;
+          System.out.println(sum);
+        
+        
+        //Number 3- Prime Factor
+        long PF = 600851475143L;
+        boolean div = false;
+        for (int count = 1; count<4; count++) {
+            div = false;
+            for (int x = 2; x < PF && div == false; x++) {
+                if (PF%x == 0) {
+                    PF = PF / x;
+                    div = true;
+                    System.out.println(x + "  "+ PF);
+                }
+            }
+        }
+        
+        
+        //Number 5- Divisible Multiple
+        int LCM = 1;
+        boolean vera = false;
+        for (int num = 2; num<21; num++) {
+            vera = false;
+            for (int x = 2; x<num; x++) {
+                if (num%x == 0) {
+                vera = true;
+                }
+            }
+                if (vera == false){
+                LCM = LCM*num;
+                System.out.println(LCM + "    " + num);
+                }
+        }
+        LCM = LCM*2*2*2*3;
+        System.out.println(LCM);
+      
+        
+        //Numer 6- Sum Square Difference
+        Long SumofSq = 0L;
+        Long SqofSum = 0L;
+        Long Diff;
+        
+        for (int x = 1; x<101; x++){
+            SumofSq = SumofSq + x*x;
+        }
+        
+        for (int x = 1; x<101; x++){
+            SqofSum = SqofSum + x;
+        }
+        SqofSum = SqofSum*SqofSum;
+        
+        System.out.println(SqofSum - SumofSq);
+        System.out.println(SqofSum);
+        System.out.println(SumofSq);
+        
+        
+        //Number 7- Gives the nth prime number
+        int count = 0, x = 3;
+        //ALL primes numbers stored in this array
+        int[ ] primes = new int[100000];
+        primes[0] = 2;
+        boolean div = false;
+        //This counts each prime, set it to 1 less than needed, because it doesn't have 2
+        while (count < 10000) {
+                div = false;
+                int y = 0;
+                while (div == false && y <= count) {
+                    if (x%primes[y] == 0) {
+                        div = true;
+                    }
+                    y++;
+                }
+                if (div == false) {
+                    count++;
+                    primes[count] = x;
+                }
+                x++;
+        }
+        
+        count = count+1;
+        System.out.println("The " + count + "th prime number is " + primes[count-1]);
+          
+        
+        //Number 10- Prime Number Summation
+        //NOT EFFICIENT
+        long sum = 0;
+        int count = 0;
+        int x = 0;
+        boolean pr = true;
+        int[ ] primes = new int[1000000];
+        primes[0] = 2;
+        
+        for (int num = 3; num<2000000; num++) {
+            while (pr == true && x<=count && x<=Math.sqrt((double)primes[count])) {
+                if (num%primes[x] == 0) {
+                    pr = false;
+                }
+                x++;
+            }
+
+                if (pr == true) {
+                    count++;
+                    primes[count] = num;
+                    sum = sum + primes[count];
+                    System.out.println(primes[count] + "   " + sum);
+                }
+                
+                pr = true;
+                x = 0;
+        }
+        System.out.println(primes[count] + "   " + sum);
+        
+        
+        //Number 12- Number of Factors
+        double tri = 0;
+        long sqtri = 0;
+        int numdiv = 0;
+        int count = 1;
+        // the number 1 and the (possibly) perfect square add 2, but it will still be less than 500
+        while (numdiv<=500) {
+            numdiv = 0;
+            tri = tri + count;
+            sqtri = (long)tri;
+            for (long y = 2; y<Math.sqrt(tri); y++) {
+                if (sqtri%y == 0) {
+                    numdiv = numdiv + 2;
+                }
+            }
+            count++;
+        }
+
+        
+        System.out.println(sqtri + " has " + numdiv + " factors.");
+        
+        
+        
+        
+        //Number 15- Grid Routes
+        long[ ][ ] path = new long[21][21];
+        for (int x = 0; x<21; x++) {
+            path[0][x] = 1;
+            path[x][0] = 1;
+        }
+        for (int x = 1; x<21; x++) {
+            for (int y = 1; y<21; y++) {
+                path[x][y] = path[x-1][y] + path[x][y-1];
+                
+            }
+            System.out.println(path[x][x]);
+        }
+        
+        
+    }
+}
