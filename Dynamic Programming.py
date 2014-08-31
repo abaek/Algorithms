@@ -30,6 +30,48 @@ def maxValueInSequence(ar):
     maximum length in which the values in the subsequence form
     a strictly increasing sequence.
 """
+def maxIncSubsequence(ar):
+    lastIndexOfLength = [-1 for i in range(len(ar)+1)]
+    lastElemOfLength = [-1 for i in range(len(ar)+1)]
+    parent = [-1 for i in range(len(ar))]
+    lastIndexOfLength[1] = 0
+    lastElemOfLength[1] = ar[0]
+    maxLength = 1
+    for i in range(1, len(ar)):
+        curElem = ar[i]
+        if curElem > ar[lastIndexOfLength[maxLength]]:
+            parent[i] = lastIndexOfLength[maxLength]
+            maxLength += 1
+            lastIndexOfLength[maxLength] = i
+            lastElemOfLength[maxLength] = ar[i]
+        else:
+            pos = indexJustGreater(curElem, lastElemOfLength, maxLength)
+            parent[i] = lastIndexOfLength[pos-1]
+            lastIndexOfLength[pos] = i
+            lastElemOfLength[pos] = ar[i]
+    longestIncSeq = []
+    curIndex = lastIndexOfLength[maxLength]
+    while curIndex != -1:
+        longestIncSeq.append(ar[curIndex])
+        curIndex = parent[curIndex]
+    longestIncSeq = longestIncSeq[::-1]
+    return maxLength, longestIncSeq
+
+def indexJustGreater(val, ar, maxLength):
+    maxPos = maxLength
+    minPos = 1
+    while maxPos > minPos:
+        curPos = (maxPos + minPos) / 2
+        if ar[curPos] == val:
+            return curPos
+            break
+        elif ar[curPos] > val:
+            maxPos = curPos
+        else:
+            minPos = curPos+1
+    return maxPos
+
+#O(n^2)
 def maxSequence(ar):
     bestPath = {}
     for i in range(len(ar)):
@@ -43,7 +85,9 @@ def maxSequence(ar):
     print bestPath
     return max(bestPath.values())
 
-#print maxSequence([1, 10, 2, 8, 9, 3, 4, 5, 6, 7, 30, 2, 9, 11])
+# print maxIncSubsequence([1, 10, 2, 8, 9, 3, 4, 5, 6, 7, 30, 2, 9, 11])
+# print maxIncSubsequence([10, 11, 7, 56, 8, 9, 1, 2, 3, 4, 5, 30, 7, 0])
+#print indexJustGreater(2, [-1, 1, 3, 5, 7, 9, 11, -1, -1, -1, -1], 6)
 
 """
 3) Making Change
@@ -134,3 +178,70 @@ def bridges(north, south):
     return max(connections)
 
 #print bridges([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [4, 5, 6, 9, 1, 10, 3, 2, 8, 7])
+
+
+"""
+6) Integer Knapsack Problem (with duplicates)
+"""
+#items = [(weight, value), (weight, value)]
+def knapsack(capWeight, items):
+    values = [[-1 for i in range(capWeight+1)] for j in range(len(items))]
+    firstItemWeight = items[0][0]
+    firstItemValue = items[0][1]
+    curValue = 0
+    values[0][0] = 0
+    for weight in range(1, capWeight + 1):
+        if weight % firstItemWeight == 0:
+            curValue += firstItemValue
+        values[0][weight] = curValue
+    for item in range(1, len(items)):
+        itemWeight = items[item][0]
+        itemValue = items[item][1]
+        for weight in range(1, capWeight+1):
+            if weight < itemWeight:
+                values[item][weight] = values[item-1][weight]
+            else:
+                values[item][weight] = max(values[item-1][weight], values[item][weight - itemWeight] + itemValue)
+    return max(values[len(items)-1])
+
+#print knapsack(39, [(10, 10), (5, 4), (2, 1)])
+
+
+"""
+7) Integer Knapsack Problem (no duplicates)
+"""
+def knapsackNoDup(capWeight, items):
+    values = [[-1 for i in range(capWeight+1)] for j in range(len(items))]
+    for weight in range(items[0][0]):
+        values[0][weight] = 0
+    for weight in range(items[0][0], capWeight):
+        values[0][weight] = items[0][1]
+    for item in range(len(items)):
+        itemWeight = items[item][0]
+        itemValue = items[item][1]
+        usedItem = [False for i in range(capWeight+1)]
+        for weight in range(1, capWeight+1):
+            if weight < itemWeight:
+                values[item][weight] = values[item-1][weight]
+            else:
+                if usedItem[weight - itemWeight]:
+                    values[item][weight] = max(values[item-1][weight], values[item][weight - 1])
+                    if values[item][weight] == values[item][weight - 1]:
+                        usedItem[weight] = True
+                else:
+                    values[item][weight] = max(values[item-1][weight], values[item][weight - itemWeight] + itemValue)
+                    if values[item][weight] == values[item][weight - itemWeight] + itemValue:
+                        usedItem[weight] = True
+    return values[len(items)-1][capWeight]
+
+print knapsackNoDup(39, [(20, 10), (15, 5), (7, 3), (12, 4)])
+
+"""
+8)
+"""
+
+
+
+
+
+

@@ -115,18 +115,19 @@ def fn7(ar, key):
     low = 0
     high = len(ar)-1
     if (key > ar[high] or key < ar[low]):
-        return False
-    while(True):
-        if high == low:
-            return key == ar[low]
+        return -1
+    while high >= low:
+        if high == low and ar[high] != key:
+            return -1
         curIndex = (high+low)/2
         curElem = ar[curIndex]
         if curElem == key:
-            return True
+            return curIndex
         elif key > curElem:
             low = curIndex+1
         else:
-            high = curIndex
+            high = curIndex-1
+    return -1
 
 
 # for i in range(16):
