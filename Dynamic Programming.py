@@ -202,7 +202,8 @@ def knapsack(capWeight, items):
                 values[item][weight] = values[item-1][weight]
             else:
                 values[item][weight] = max(values[item-1][weight], values[item][weight - itemWeight] + itemValue)
-    return max(values[len(items)-1])
+    for line in values: print line
+    return values[len(items)-1][capWeight]
 
 #print knapsack(39, [(10, 10), (5, 4), (2, 1)])
 
@@ -214,33 +215,52 @@ def knapsackNoDup(capWeight, items):
     values = [[-1 for i in range(capWeight+1)] for j in range(len(items))]
     for weight in range(items[0][0]):
         values[0][weight] = 0
-    for weight in range(items[0][0], capWeight):
+    for weight in range(items[0][0], capWeight+1):
         values[0][weight] = items[0][1]
-    for item in range(len(items)):
+    for item in range(1, len(items)):
         itemWeight = items[item][0]
         itemValue = items[item][1]
-        usedItem = [False for i in range(capWeight+1)]
         for weight in range(1, capWeight+1):
             if weight < itemWeight:
                 values[item][weight] = values[item-1][weight]
             else:
-                if usedItem[weight - itemWeight]:
-                    values[item][weight] = max(values[item-1][weight], values[item][weight - 1])
-                    if values[item][weight] == values[item][weight - 1]:
-                        usedItem[weight] = True
-                else:
-                    values[item][weight] = max(values[item-1][weight], values[item][weight - itemWeight] + itemValue)
-                    if values[item][weight] == values[item][weight - itemWeight] + itemValue:
-                        usedItem[weight] = True
+                values[item][weight] = max(values[item-1][weight], values[item-1][weight - itemWeight] + itemValue)
+    for line in values: print line
     return values[len(items)-1][capWeight]
 
-print knapsackNoDup(39, [(20, 10), (15, 5), (7, 3), (12, 4)])
+#print knapsackNoDup(39, [(20, 10), (15, 5), (7, 3), (12, 4)])
 
 """
-8)
+8) Balanced Partition.
+    You have a set of n integers each in the range 0 ... K. Partition these
+    integers into two subsets such that you minimize |S1 - S2|, where S1 and
+    S2 denote the sums of the elements in each of the two subsets.
 """
+def balancedPartition(ar):
+    total = sum(ar)
+    half = total / 2
+    sumPossible = [[-1 for i in range(half+1)] for j in range(len(ar))]
+    sumPossible[0] = [0 for i in range(half+1)]
+    sumPossible[0][0] = 1
+    if ar[0] <= half:
+        sumPossible[0][ar[0]] = 1
+    for elem in range(1, len(ar)):
+        curValue = ar[elem]
+        sumPossible[elem][0] = 1
+        for cursum in range(1, half+1):
+            if cursum < curValue:
+                sumPossible[elem][cursum] = sumPossible[elem-1][cursum]
+            else:
+                sumPossible[elem][cursum] = max(sumPossible[elem-1][cursum], sumPossible[elem-1][cursum-curValue])
 
+    for line in sumPossible: print line
 
+    for cursum in range(half, -1, -1):
+        if sumPossible[len(ar)-1][cursum] == 1:
+            return cursum, total-cursum
+            break
+
+print balancedPartition([9, 7, 3])
 
 
 
