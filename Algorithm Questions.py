@@ -1,3 +1,6 @@
+import random
+from random import randint
+
 ##General
 #Find the most frequent integer in an array
 def fn1(ar):
@@ -96,7 +99,7 @@ def fn5(ar):
         else:
             visited.add(elem)
             onlyOnce.add(elem)
-    return list(onlyOn4ce)[0]
+    return list(onlyOnce)[0]
 
 # print fn5([1, 1, 2, 2, 3, 3, 4, 5, 5, 6, 6, 6, 6])
 
@@ -176,25 +179,160 @@ def fn10(num):
     print bin(num)
 
 #Implement parseInt
-def fn11()
+#def fn11():
 
 #Implement squareroot function
+#def fn12(num):
+
+
 
 #Implement an exponent function (bonus: now try in log(n) time)
+def fn13(base, exponent):
+    result = 1
+    while exponent != 0:
+        if exponent%2 == 1:
+            result *= base
+            exponent -= 1
+        base *= base
+        exponent /= 2
+    return result
+
+# print fn13(3, 0)
+# print fn13(3, 1)
+# print fn13(3, 2)
+# print fn13(3, 3)
+
+
 
 #Write a multiply function that multiples 2 integers without using *
+def fn14(a, b):
+    result = 0
+    if a == 0 or b == 0:
+        return 0
+    elif (a > 0 and b > 0) or (a < 0 and b < 0):
+        for i in range(abs(b)):
+            result += abs(a)
+    else:
+        for i in range(abs(b)):
+            result -= abs(a)
+    return result
+
+#print fn14(5, -10)
+
+
 
 #HARD: Given a function rand5() that returns a random int between 0 and 5, implement rand7()
+def fn15():
+    num1 = randint(0,5)
+    num2 = randint(0,5)
+    if num1 == 0 and num2 <= 3:
+        return 0
+    elif (num1 == 0) or (num1 == 1 and num2 <= 1):
+        return 1
+    elif (num1 == 1):
+        return 2
+    elif num1 == 2 and num2 <= 3:
+        return 3
+    elif (num1 == 2) or (num1 == 3 and num2 <= 1):
+        return 4
+    elif (num1 == 3):
+        return 5
+    elif (num1 == 4) and num2 <= 3:
+        return 6
+    elif (num1 == 4) or (num1 == 5 and num2 <= 1):
+        return 7
+    else:
+        return fn15()
+
+# ar = [0 for i in range(8)]
+# for i in range(100000):
+#     ar[fn15()] += 1
+# print ar
+
+
 
 #HARD: Given a 2D array of 1s and 0s, count the number of "islands of 1s" (e.g. groups of connecting 1s)
+def fn16(ar):
+    for line in ar: print line
+    numGroups = 0
+    visited = set()
+    rightEdge = len(ar[0])-1
+    bottomEdge = len(ar)-1
+    for row in range(len(ar)):
+        for col in range(len(ar[0])):
+            if ar[row][col] == 1:
+                if not ((row, col) in visited):
+                    numGroups += 1
+                newblocks = [(row+1, col), (row, col+1)]
+                for block in newblocks:
+                    if block[1] > rightEdge or block[0] > bottomEdge:
+                        continue
+                    else:
+                        visited.add(block)
+    print visited
+    return numGroups
+
+# print fn16([[1, 0, 0, 0, 1], [1, 0, 1, 1, 0], [0, 1, 0, 1, 1]])
+
+
+
+
+
+
+
+
+
 
 ##Strings
 #Find the first non-repeated character in a String
+def fn17(str):
+    uniques = set()
+    visited = set()
+    listchar = list(str)
+    for char in listchar:
+        if not char in visited:
+            uniques.add(char)
+            visited.add(char)
+        else:
+            uniques.remove(char)
+    for char in listchar:
+        if char in uniques:
+            return char
+            break
+
+#print fn17("abcdabchd")
+
 
 #Reverse a String iteratively and recursively
+def fn18iter(str):
+    length = len(str)
+    reversedstr = [-1 for i in range(length)]
+    for i in range(length):
+        reversedstr[i] = str[length-i-1]
+    return ''.join(reversedstr)
+
+def fn18recur(str):
+    if len(str) == 0:
+        return ''
+    else:
+        return str[-1] + fn18recur(str[:-1])
+
+# print fn18iter("sahdkjasbf")
+# print fn18recur("sahdkjasbf")
+
+
 #Determine if 2 Strings are anagrams
+def fn19(str1, str2):
+    sortstr1 = sorted(str1)
+    sortstr2 = sorted(str2)
+    return sortstr1 == sortstr2
+
+# print fn19("cat", "atc")
+# print fn19("yolo", "ooll")
 
 #Check if String is a palindrome
+
+
 
 #Check if a String is composed of all unique characters
 
@@ -208,6 +346,16 @@ def fn11()
 # 'String justify(String text, int maxWidth)' that formats the input text using full-justification,
 # i.e., extra spaces on each line are equally distributed between the words; the first word on each line
 # is flushed left and the last word on each line is flushed right
+
+
+
+
+
+
+
+
+
+
 
 
 ##Trees
@@ -240,6 +388,14 @@ def fn11()
 
 
 
+
+
+
+
+
+
+
+
 ##Stacks, Queues, and Heaps
 
 #Implement a stack with push and pop functions
@@ -253,6 +409,11 @@ def fn11()
 #Implement a binary min heap. Turn it into a binary max heap
 
 #HARD: Implement a queue using 2 stacks
+
+
+
+
+
 
 
 
@@ -275,6 +436,10 @@ def fn11()
 
 
 
+
+
+
+
 ##Sorting
 
 #Implement bubble sort
@@ -283,6 +448,64 @@ def fn11()
 
 #Implement insertion sort
 
+
 #Implement merge sort
+def mergesort(ar):
+    if len(ar) <= 1:
+        return ar
+    lengthArray = len(ar)
+    bottomhalf = mergesort(ar[:lengthArray/2])
+    tophalf = mergesort(ar[lengthArray/2:])
+
+    result = []
+    topElem = 0
+    topLength = len(tophalf)
+    bottomElem = 0
+    bottomLength = len(bottomhalf)
+    while True:
+        if bottomElem == bottomLength and topElem == topLength:
+            break
+        elif bottomElem == bottomLength:
+            result.extend(tophalf[topElem:])
+            break
+        elif topElem == topLength:
+            result.extend(bottomhalf[bottomElem:])
+            break
+        elif tophalf[topElem] > bottomhalf[bottomElem]:
+            result.append(bottomhalf[bottomElem])
+            bottomElem += 1
+        else:
+            result.append(tophalf[topElem])
+            topElem += 1
+    return result
+
+
 
 #Implement quick sort
+def quicksort(ar):
+    if len(ar) == 0:
+        return []
+    else:
+        low = []
+        high = []
+        pivot = ar[0]
+        for i in range(1, len(ar)):
+            curElem = ar[i]
+            if curElem < pivot:
+                low.append(curElem)
+            else:
+                high.append(curElem)
+        result = quicksort(low)
+        result.append(pivot)
+        result.extend(quicksort(high))
+        return result
+
+print quicksort([3, 5, 4, 1, 7, 9, 8, 6, 2, 0])
+print mergesort([3, 5, 4, 1, 7, 9, 8, 6, 2, 0])
+print mergesort([])
+print mergesort([3])
+print mergesort([4, 3])
+print mergesort([5, 3, 4, 2])
+
+
+
