@@ -1,4 +1,5 @@
 import random
+import math
 from random import randint
 
 ##General
@@ -331,24 +332,113 @@ def fn19(str1, str2):
 # print fn19("yolo", "ooll")
 
 #Check if String is a palindrome
+def fn20(str):
+    listchar = list(str)
+    lastPos = len(listchar)
+    for i in range(lastPos/2):
+        if not listchar[i] == listchar[lastPos-i-1]:
+            return False
+    return True
 
+# print fn20("abcdcba")
+# print fn20("abcddcba")
+# print fn20("abcddcbad")
 
 
 #Check if a String is composed of all unique characters
+def fn21(str):
+    listChar = list(str)
+    unique = set()
+    for char in listChar:
+        if char in unique:
+            return False
+        else:
+            unique.add(char)
+    return True
+
+# print fn21("asdfghjkl")
+# print fn21("asdfghjkal")
+
 
 #Determine if a String is an int or a double
 
 #HARD: Find the shortest palindrome in a String
+def fn23(str):
+    pass
+
 
 #HARD: Print all permutations of a String
+def fn24(str):
+    visited = set()
+    result = 0
+    for i in range(len(str)):
+        newStr = str[:i] + str[i+1:]
+        result += fn24Helper(newStr, str[i], visited)
+    return result
+
+def fn24Helper(str, sofar, visited):
+    if str == '':
+        if sofar in visited:
+            return 0
+        else:
+            visited.add(sofar)
+            print sofar
+            return 1
+    else:
+        result = 0
+        for i in range(len(str)):
+            newStr = str[:i] + str[i+1:]
+            result += fn24Helper(newStr, sofar + str[i], visited)
+        return result
+
+#print fn24("aablk")
 
 #HARD: Given a single-line text String and a maximum width value, write the function
 # 'String justify(String text, int maxWidth)' that formats the input text using full-justification,
 # i.e., extra spaces on each line are equally distributed between the words; the first word on each line
 # is flushed left and the last word on each line is flushed right
+def fn25(text, maxWidth):
+    words = text.split()
+    totalNumWords = len(words)
+    currentWordIndex = 0
+    lastLine = False
+    while not lastLine:
+        #determine number of words per line and spaces in line
+        lineLength = 0
+        wordLength = 0
+        numWords = 0
+        currentWordIndexCopy = currentWordIndex
+        while lineLength <= maxWidth+1:
+            if currentWordIndexCopy >= totalNumWords-1:
+                lastLine = True
+                numWords += 1
+                break
+            lineLength += len(words[currentWordIndexCopy]) + 1
+            wordLength += len(words[currentWordIndexCopy])
+            currentWordIndexCopy += 1
+            numWords += 1
+        if not lastLine:
+            lineLength -= len(words[currentWordIndexCopy-1]) + 1
+            wordLength -= len(words[currentWordIndexCopy-1])
+        numWords -= 1
+        numGaps = numWords - 1
+        spacesAvailable = maxWidth - wordLength
+
+        #create line
+        line = ""
+        for curWord in range(numWords):
+            if numGaps == 0:
+                line += words[currentWordIndex]
+            else:
+                numSpaces = int(math.ceil(spacesAvailable/(numGaps*1.0)))
+                line += words[currentWordIndex] + (" " * numSpaces)
+                spacesAvailable -= numSpaces
+                numGaps -= 1
+            currentWordIndex += 1
+        print line
 
 
-
+#fn25("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 40)
 
 
 
@@ -360,31 +450,64 @@ def fn19(str1, str2):
 
 ##Trees
 #Implement a BST with insert and delete functions
+class Tree:
+    def __init__(self, value=None, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+    def insert(self, val):
+        curNode = self
+        while curNode != None:
+            if self.value < val:
+                if self.right == None:
+                    self.right = Tree(val)
+                    break
+                curNode = self.right
+            else:
+                if self.left == None:
+                    self.left = Tree(val)
+                    break
+                curNode = self.left
+
+
+
 
 #Print a tree using BFS and DFS
 
+
 #Write a function that determines if a tree is a BST
+
 
 #Find the smallest element in a BST
 
+
 #Find the 2nd largest number in a BST
+
 
 #Given a binary tree which is a sum tree (child nodes add to parent), write an algorithm to determine
 # whether the tree is a valid sum tree
 
+
 #Find the distance between 2 nodes in a BST and a normal binary tree
+
 
 #Print the coordinates of every node in a binary tree, where root is 0,0
 
+
 #Print a tree by levels
+
 
 #Given a binary tree which is a sum tree, write an algorithm to determine whether the tree is a valid sum tree
 
+
 #Given a tree, verify that it contains a subtree.
+
 
 #HARD: Find the max distance between 2 nodes in a BST.
 
+
 #HARD: Construct a BST given the pre-order and in-order traversal Strings
+
 
 
 
@@ -500,12 +623,12 @@ def quicksort(ar):
         result.extend(quicksort(high))
         return result
 
-print quicksort([3, 5, 4, 1, 7, 9, 8, 6, 2, 0])
-print mergesort([3, 5, 4, 1, 7, 9, 8, 6, 2, 0])
-print mergesort([])
-print mergesort([3])
-print mergesort([4, 3])
-print mergesort([5, 3, 4, 2])
+# print quicksort([3, 5, 4, 1, 7, 9, 8, 6, 2, 0])
+# print mergesort([3, 5, 4, 1, 7, 9, 8, 6, 2, 0])
+# print mergesort([])
+# print mergesort([3])
+# print mergesort([4, 3])
+# print mergesort([5, 3, 4, 2])
 
 
 
