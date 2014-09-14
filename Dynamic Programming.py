@@ -2,7 +2,7 @@
 # Author:      Andy Baek
 # Created:     25-08-2014
 # Copyright:   (c) Andy Baek 2014
-# Questions:   http://people.cs.clemson.edu/~bcdean/dp_practice/
+# Source:   http://people.cs.clemson.edu/~bcdean/dp_practice/
 #-------------------------------------------------------------------------------
 
 """
