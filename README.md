@@ -10,10 +10,9 @@ Solving algorithm questions from various sources such as:
 - Cracking the Coding Interview (Gayle Laakmann)
 
 Covers the following topics:
+- Arrays and Strings
 - Dynamic Programming
-- Graph Theory
-- Arrays (Sorting and Searching)
-- String Manipulation
+- Graphs and Trees
 - Bit Manipulation
 - Math
 - Data Structures:
