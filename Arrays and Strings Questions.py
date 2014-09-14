@@ -38,7 +38,7 @@ assert quicksort([3, 5, 4, 1, 7, 9, 8, 6, 2, 0, 10]) == sorted([3, 5, 4, 1, 7, 9
 
 """
 3) Implement binary search
-	#Efficiency: O(logn)
+	Efficiency: O(logn)
 """
 def binSearch(ar, val):
 	pass
