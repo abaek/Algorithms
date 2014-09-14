@@ -8,3 +8,14 @@ Solving algorithm questions from various sources such as:
 - ProjectEuler.net
 - Reddit.com/r/cscareerquestions
 - Cracking the Coding Interview (Gayle Laakmann)
+
+Covers the following topics:
+- Dynamic Programming
+- Graph Theory
+- Arrays (Sorting and Searching)
+- String Manipulation
+- Data Structures:
+  - Stacks
+  - Queues
+  - Linked Lists
+  - Heaps
