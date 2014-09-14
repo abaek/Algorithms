@@ -14,6 +14,8 @@ Covers the following topics:
 - Graph Theory
 - Arrays (Sorting and Searching)
 - String Manipulation
+- Bit Manipulation
+- Math
 - Data Structures:
   - Stacks
   - Queues
