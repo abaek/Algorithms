@@ -8,22 +8,21 @@
 
 
 """
-Implement a linked list (with insert and delete functions)
+You are given the following classes
 """
 class LinkedList():
 	def __init__(self, value=None, next=None):
 		self.value = value
 		self.next = next
 
-"""
-Given a circular linked list, find the node at the beginning of the loop. Example: A-->B-->C --> D-->E -->C, C is the node that begins the loop
-"""
-def circularLL(LL):
-	pass
+class TreeNode:
+	def __init__(self, value=None, left=None, right=None):
+		self.value = value
+		self.left = left
+		self.right = right
 
-
 """
-Implement a stack with push and pop functions
+1) Implement a stack with push and pop functions
 """
 class Stack():
 	def __init__(self, top=None):
@@ -32,24 +31,53 @@ class Stack():
 		newLL = LinkedList(elem, self.top)
 		self.top = newLL
 	def pop(self):
-		topElem = self.top.value
-		self.top = self.top.next
-		return topElem
+		if self.top != None:
+			topElem = self.top.value
+			self.top = self.top.next
+			return topElem
+		else:
+			return None
 
 """
-Implement a queue with queue and dequeue functions
+2) Implement a queue with queue and dequeue functions
 """
 class Queue():
 	def __init__(self, first=None, last=None):
 		self.first = first
 		self.last = last
+	def queue(self, elem):
+		newElem = LinkedList(elem)
+		if self.last == None:
+			self.last = newElem
+			self.first = newElem
+		else:
+			self.last.next = newElem
+	def dequeue(self):
+		if self.first == None:
+			return None
+		else:
+			self.first = self.first.next
+
+"""
+3) Implement a binary minheap with ability to add elements
+"""
+class MinHeap():
+	def __init__(self, root=None):
+		self.root = root
 	def add(self, elem):
-		newElem = Node(elem)
-		self.next = newElem
+		pass
+
 
 
 """
-Write a function that sorts a stack using only stacks
+4) Convert a binary min heap into a binary max heap
+"""
+def minToMaxHeap(heap):
+	pass
+
+
+"""
+5) Write a function that sorts a stack using only stacks
 """
 def sortStack(stack):
 	newStack = Stack()
@@ -57,11 +85,15 @@ def sortStack(stack):
 		pass
 
 
-"""
-Implement a binary min heap. Turn it into a binary max heap
-"""
-class MinHeap():
-	pass
 
-def minToMaxHeap(heap):
-	pass
+
+
+
+
+
+
+
+
+
+
+		
