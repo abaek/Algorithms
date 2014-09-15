@@ -17,9 +17,8 @@ Problems cover the following topics:
 - Arrays and Strings
 - Dynamic Programming
 - Graphs and Trees
-- Bit Manipulation
-- Math
-- Data Structures:
+- Bit Manipulation (in progress)
+- Data Structures: (in progress)
   - Stacks
   - Queues
   - Linked Lists
