@@ -1,9 +1,11 @@
 #-------------------------------------------------------------------------------
-# Author:      Andy Baek
-# Created:     12-09-2014
-# Copyright:   (c) Andy Baek 2014
-# Questions:   Cracking the Coding Interview
+# Title: 		Data Structures
+# Author:      	Andy Baek
+# Created:     	12-09-2014
+# Copyright:   	(c) Andy Baek 2014
+# Sources:   	Cracking the Coding Interview (Gayle Laakmann)
 #-------------------------------------------------------------------------------
+
 
 """
 Implement a linked list (with insert and delete functions)

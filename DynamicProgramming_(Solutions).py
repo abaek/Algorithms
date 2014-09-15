@@ -1,8 +1,9 @@
 #-------------------------------------------------------------------------------
-# Author:      Andy Baek
-# Created:     25-08-2014
-# Copyright:   (c) Andy Baek 2014
-# Source:   http://people.cs.clemson.edu/~bcdean/dp_practice/
+# Title: 		Dynamic Programming
+# Author:      	Andy Baek
+# Created:     	25-08-2014
+# Copyright:   	(c) Andy Baek 2014
+# Sources:   	http://people.cs.clemson.edu/~bcdean/dp_practice/
 #-------------------------------------------------------------------------------
 
 """

@@ -1,8 +1,9 @@
 #-------------------------------------------------------------------------------
-# Author:      Andy Baek
-# Created:     12-09-2014
-# Copyright:   (c) Andy Baek 2014
-# Questions:   Cracking the Coding Interview
+# Title: 		Arrays and Strings
+# Author:      	Andy Baek
+# Created:     	12-09-2014
+# Copyright:   	(c) Andy Baek 2014
+# Sources:   	Cracking the Coding Interview (Gayle Laakmann)
 #-------------------------------------------------------------------------------
 
 """
@@ -82,6 +83,7 @@ assert quicksort([4, 1, 3, 2]) == sorted([4, 1, 3, 2])
 assert quicksort([3, 5, 4, 1, 7, 9, 8, 6, 2, 0]) == sorted([3, 5, 4, 1, 7, 9, 8, 6, 2, 0])
 assert quicksort([3, 5, 4, 1, 7, 9, 8, 6, 2, 0, 10]) == sorted([3, 5, 4, 1, 7, 9, 8, 6, 2, 0, 10])
 
+
 """
 3) Implement binary search
 	#Efficiency: O(logn)
@@ -131,15 +133,18 @@ assert not binSearch([1, 3, 5], 6)
 def rotatedArray(ar1, ar2):
 	if len(ar1) != len(ar2):
 		return False
-	#for each starting position in ar1, check all starting positions in ar2
+	#try all starting positions in ar2
 	for i in range(len(ar2)):
 		ar2Pos = i
 		ar1Pos = 0
+		#go through all positions to make sure they match
 		while(ar1[ar1Pos] == ar2[ar2Pos]):
 			ar1Pos += 1
 			ar2Pos += 1
+			#finished
 			if ar1Pos == len(ar1):
 				return True
+			#reached end of ar2
 			if (ar2Pos == len(ar2)):
 				ar2Pos = 0
 	return False
@@ -149,24 +154,29 @@ assert rotatedArray([1, 1, 1, 2, 1, 1, 2, 1, 2], [1, 2, 1, 1, 1, 2, 1, 1, 2])
 assert not rotatedArray([1, 1, 2, 1, 1, 2], [1, 2, 1, 2, 1, 1])
 assert not rotatedArray([1, 2, 3, 4, 6, 6], [6, 5, 6, 1, 2, 3])
 
+
 """
 5) Find all permutations of a string
+	Efficiency: O(n!)
 """
 def permutationsString(str):
-	#permutations[i] = set of all permutations of length i
-	permutations = set([''])
-	#use each characetr
-	for i in range(len(str)):
-		#use each existing permutations
-		for perm in list(permutations):
-			#use all available spaces in the permutation
-			for pos in range(len(perm)+1):
-				permutations.add(perm[:pos] + str[i] + perm[pos:])
-	return sorted(list(permutations))
+	previousPerm = ['']
+	#add characters one by one
+	for curPos in range(len(str)):
+		newPermutations = set()
+		#loop through all permutations of one less length
+		for perm in previousPerm:
+			for pos in range(curPos+1):
+				newPermutations.add(perm[:pos] + str[curPos] + perm[pos:])
+		previousPerm = list(newPermutations)
+	return previousPerm
+
 #tests:
-assert permutationsString('abc') == ['', 'a', 'ab', 'abc', 'ac', 'acb', 'b', 'ba', 'bac', 'bc', 'bca', 'c', 'ca', 'cab', 'cb', 'cba']
-assert permutationsString('aab') == ['', 'a', 'aa', 'aab', 'ab', 'aba', 'b', 'ba', 'baa']
-assert permutationsString('aa') == ['', 'a', 'aa']
+assert sorted(permutationsString('abc')) == sorted(['acb', 'abc', 'bca', 'cba', 'bac', 'cab'])
+assert sorted(permutationsString('aab')) == sorted(['aba', 'aab', 'baa'])
+assert permutationsString('aa') == ['aa']
+assert permutationsString('') == ['']
+
 
 """
 6) Reverse the words in a setence with one buffer space
@@ -230,6 +240,10 @@ def setZeroesGrid(grid):
     return grid
 #tests:
 assert setZeroesGrid([[1, 1, 0], [1, 1, 1], [1, 0, 1]]) == [[0, 0, 0], [1, 0, 0], [0, 0, 0]]
+assert setZeroesGrid([[1, 1, 1], [1, 0, 1], [1, 1, 1]]) == [[1, 0, 1], [0, 0, 0], [1, 0, 1]]
+assert setZeroesGrid([[0, 1, 1], [1, 1, 1], [1, 1, 0]]) == [[0, 0, 0], [0, 1, 0], [0, 0, 0]]
+assert setZeroesGrid([[0, 1], [1, 1]]) == [[0, 0], [0, 1]]
+assert setZeroesGrid([[1, 1], [1, 1]]) == [[1, 1], [1, 1]]
 
 """
 8) Remove duplicates in a string with one buffer space
