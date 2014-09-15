@@ -6,12 +6,12 @@ A series of programming problems written and solved in Python.
 Instructions
 ---------
 Download this folder as a .zip and start solving problems from the '(Questions)' .py files.
-The questions are all setup already. They specify efficiency, and include test cases that you can comment out to ensure your function works
+The questions are all setup already. They specify an ideal efficiency, and include test cases that you can uncomment out to ensure your function works.
 
-To look over my solution, access the question from the corresponding .py file. 
-(*Note, most questions have many different possible solutions, and my solution is only one of the possible ways to solve it.)
+If you get stuck or want to compare solutions, you can access my solution from the corresponding '(Solutions)' .py file. 
+(*Note, most questions have many different possible solutions, and my solution is only one possible approach.)
 
-Topics Covers
+Topics Covered
 --------
 Problems cover the following topics:
 - Arrays and Strings
