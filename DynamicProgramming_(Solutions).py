@@ -245,4 +245,41 @@ def balancedPartition(ar):
 #tests:
 assert balancedPartition([9, 7, 3]) == 1
 
+"""
+9)
+"""
+def candies(scores):
+    #if no kids, 0 candies
+    if scores == []:
+        return 0
+    #result[i] = min candies given to student #i-1
+    result = [-1 for i in range(len(scores))]
+    result[0] = 1
+    #lastBreak = last time when consecutive scores were equal (partition)
+    lastBreak = 0
+    for i in range(1, len(scores)):
+    	#add one candy
+        if scores[i] > scores[i-1]:
+            result[i] = result[i-1] + 1
+        #scores are same, add breakpoint
+        elif scores[i] == scores[i-1]:
+            result[i] = 1
+            lastBreak = i
+        else:
+        	#decrement by 1 if possible
+            if result[i-1] >= 2:
+                result[i] = 1
+            else:
+            	result[i] = 0
+                childIndex = i
+                while (childIndex > lastBreak) and (result[childIndex-1] == result[childIndex] + 1):
+                    result[childIndex] += 1
+                    childIndex -= 1
+                result[childIndex] += 1
+    print scores
+    print result
+    return sum(result)
+
+
+#[2, 4, 2, 6, 1, 7, 8, 9, 2, 1]
 
