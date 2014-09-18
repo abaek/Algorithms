@@ -35,16 +35,6 @@ assert convertBase('12', 3, 2) == '101'
 	where shl = shift left
 """
 def shiftSummation(num1, num2):
-	# #determine where the ones are in num1 and num2
-	# num1Ones = set()
-	# num2Ones = set()
-	# for i in range(len(num1)):
-	# 	if num1[i] == '1':
-	# 		num1Ones.add(len(num1) - i - 1)
-	# for i in range(len(num2)):
-	# 	if num2[i] == '1':
-	# 		num2Ones.add(len(num1) - i - 1)
-
     a = int(num1, 2)
     b = int(num2, 2)
     result = 0
