@@ -93,3 +93,28 @@ def distanceApart(graph, start, end):
 # assert distanceApart(graph1, 4, 5) == 1
 # assert distanceApart(graph1, 2, 1) == -1
 
+"""
+5) Implement Djkastra's Algorithm
+"""
+def Dijkstra(graph, start, end):
+	pass
+
+class Graph2:
+	#adjList = [ [(2, 3), (3, 4)], [(1, 3), (4, 9)], [(1, 4), (4, 5)], [(2, 9), (3, 5)] ]
+	#where adjList[2] = [(neighbour, weight), ..]
+	def __init__(self, adjList=[]):
+		self.list = adjList
+
+graph2 = Graph2([[], [(2, 3), (3, 4), (5, 4)], 
+					[(1, 3), (4, 9)], 
+					[(1, 4), (4, 5)], 
+					[(2, 9), (3, 5), (4, 4)], 
+					[(1, 4), (6, 4)], 
+					[(5, 4), (4, 4)]])
+graph3 = Graph2([[(1, 4), (2, 1)],
+				[(0, 4), (2, 1)],
+				[(0, 1), (1, 1)]])
+#tests:
+# assert Dijkstra(graph2, 1, 4) == 9
+# assert Dijkstra(graph3, 0, 1) == 2
+

@@ -153,3 +153,59 @@ assert distanceApart(graph1, 2, 5) == 1
 assert distanceApart(graph1, 4, 5) == 1
 assert distanceApart(graph1, 2, 1) == -1
 
+"""
+5) Implement Djkastra's Algorithm
+"""
+def Dijkstra(graph, start, end):
+	#set initial path lengths to each node
+	pathLengths = [-1 for i in range(len(graph.list))]
+	#set start node distance to 0
+	pathLengths[start] = 0
+	#Also keep track of unvisitedNodes
+	unvisitedNodes = [-1 for i in range(len(graph.list))]
+	while(True):
+		#find min path length
+		minNode = 0
+		minNodeDistance = -1
+		for i in range(len(unvisitedNodes)):
+			#must be unvisited, yet have a distance and be min distance
+			if unvisitedNodes[i] == -1 and pathLengths[i] >= 0 and (pathLengths[i] < minNodeDistance or minNodeDistance == -1):
+				minNodeDistance = pathLengths[i]
+				minNode = i
+		neighbours = graph.list[minNode]
+		#neighbour = (id, distance/weight)
+		for neighbour in neighbours:
+			#if neighbour hasnt been touched or greater distance than current route, give it a value
+			if pathLengths[neighbour[0]] == -1 or pathLengths[neighbour[0]] > minNodeDistance + neighbour[1]:
+				pathLengths[neighbour[0]] = minNodeDistance + neighbour[1]
+		#mark node as visited
+		unvisitedNodes[minNode] = 0
+		#if end node is visited, break
+		if minNode == end:
+			break
+	print pathLengths
+	return pathLengths[end]
+
+class Graph2:
+	#adjList = [ [(2, 3), (3, 4)], [(1, 3), (4, 9)], [(1, 4), (4, 5)], [(2, 9), (3, 5)] ]
+	#where adjList[2] = [(neighbour, weight), ..]
+	def __init__(self, adjList=[]):
+		self.list = adjList
+
+graph2 = Graph2([[], [(2, 3), (3, 4), (5, 4)], 
+					[(1, 3), (4, 9)], 
+					[(1, 4), (4, 5)], 
+					[(2, 9), (3, 5), (4, 4)], 
+					[(1, 4), (6, 4)], 
+					[(5, 4), (4, 4)]])
+graph3 = Graph2([[(1, 4), (2, 1)],
+				[(0, 4), (2, 1)],
+				[(0, 1), (1, 1)]])
+assert Dijkstra(graph2, 1, 4) == 9
+assert Dijkstra(graph3, 0, 1) == 2
+
+
+
+
+
+
