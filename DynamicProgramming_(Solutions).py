@@ -283,3 +283,37 @@ def candies(scores):
 
 #[2, 4, 2, 6, 1, 7, 8, 9, 2, 1]
 
+
+"""
+10) Given an array of numbers and a sum, list all
+	permutations of the numbers that sum to the
+	given sum
+"""
+def sumPerms(ar, target):
+	#table[num][val] = all permutations using first num numbers to make val
+	table = [[[] for i in range(target+1)] for j in range(len(ar))]
+	#set first row
+	if ar[0] <= target:
+		table[0][ar[0]].append([ar[0]])
+	#set table[i][0] to [] for all i
+	for i in range(len(ar)):
+		table[i][0].append([])
+	#loop through numbers in array
+	for num in range(1, len(ar)):
+		numVal = ar[num]
+		#loop through all values up to target
+		for val in range(target + 1):
+			#take all permutations from row above
+			table[num][val] = (table[num-1][val])[:]
+			#if possible, add the new number as well
+			if numVal <= val:
+				for perm in table[num-1][val-numVal]:
+					#make copy
+					newPerm = perm[:]
+					newPerm.append(numVal)
+					table[num][val].append(newPerm)
+	return table[len(ar)-1][target]
+
+#tests:
+# print sumPerms([0,1], 5)
+assert len(sumPerms([0,1,2,3,5,6,7,11,12,14,20], 20)) == 26

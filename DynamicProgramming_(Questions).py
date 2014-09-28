@@ -116,4 +116,16 @@ def balancedPartition(ar):
 #tests:
 # assert balancedPartition([9, 7, 3]) == 1
 
+"""
+10) Given an array of numbers and a sum, list all
+	permutations of the numbers that sum to the
+	given sum
+"""
+def sumPerms(ar, target):
+	pass
+
+#tests:
+# assert len(sumPerms([0,1,2,3,5,6,7,11,12,14,20], 20)) == 26
+
+
 
