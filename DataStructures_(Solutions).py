@@ -59,35 +59,8 @@ class Queue():
 			self.first = self.first.next
 
 """
-3) Implement a binary minheap with ability to add elements
+3) Implement a Binary Min Heap using an array
 """
-class MinHeap():
-	def __init__(self, root=None):
-		self.root = root
-	def add(self, elem):
-		pass
-
-
-
-"""
-4) Convert a binary min heap into a binary max heap
-"""
-def minToMaxHeap(heap):
-	pass
-
-
-"""
-5) Write a function that sorts a stack using only stacks
-"""
-def sortStack(stack):
-	newStack = Stack()
-	while(True):
-		pass
-
-"""
-6) Implement a Heap
-"""
-#implement a min heap (using an array)
 class Heap: #minHeap
 	def __init__(self, size=1):
 		self.size = size
@@ -198,21 +171,6 @@ class Heap: #minHeap
 						self.ar[index] = self.ar[index*2 + 2]
 						index = index*2 + 2
 		self.ar[index] = -1
-
-#tests:
-# h = Heap()
-# h.createFromArray([18, 5, 6, 20, 3, 12, 10, 13, 4])
-
-
-
-
-
-
-
-
-
-
-
 
 
 		

@@ -12,21 +12,13 @@
 def binAdd(num1, num2):
 	pass
 #tests:
-assert binAdd('010', '1011') == bin(13)
-
-
-"""
-2) Convert from base n to base m
-"""
-def convertBase(num, base1, base2):
-	pass
-#tests:
-assert convertBase('101', 2, 3) == '12'
-assert convertBase('12', 3, 2) == '101'
-
+# assert bitAdd(1, 1) == 2
+# assert bitAdd(1, 13) == 14
+# assert bitAdd(34, 324) == 358
+# assert bitAdd(23, 0) == 23
 
 """
-3) Given a and b, Find You should find the following sum modulo 10^9+7:
+2) Given a and b, Find You should find the following sum modulo 10^9+7:
 	Summation of (a xor (b shl i)) from i= 0 to 314159 (inclusive)
 	where shl = shift left
 """

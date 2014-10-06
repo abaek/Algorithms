@@ -276,8 +276,6 @@ def candies(scores):
                     result[childIndex] += 1
                     childIndex -= 1
                 result[childIndex] += 1
-    print scores
-    print result
     return sum(result)
 
 
@@ -315,5 +313,4 @@ def sumPerms(ar, target):
 	return table[len(ar)-1][target]
 
 #tests:
-# print sumPerms([0,1], 5)
-assert len(sumPerms([0,1,2,3,5,6,7,11,12,14,20], 20)) == 26
+# assert len(sumPerms([0,1,2,3,5,6,7,11,12,14,20], 20)) == 26
