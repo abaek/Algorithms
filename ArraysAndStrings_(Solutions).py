@@ -270,6 +270,50 @@ assert removeDuplicates('abcbdaaefgahbhhbhbcefdfde') == 'abcdefgh'
 
 
 
+"""
+9) You are given a set of m strings all of length L (call this set s), and one string of length n (call this string str).
+	(i.e. s = {'aaa', 'bbb', 'cac', 'cat'}, str = 'aaacatcacdddcataaabbbcaczzz'
+	In this case, m = 4, L = 3, and n = 27)
+
+	Find a contiguous permutation of all the words in s in a substring of str. 
+
+	So in the example, the substring 'cataaabbbcac' of str is a continguous permutation of all the words in s. 
+"""
+def continguousString(listStr, str):
+	L = len(listStr[0])
+	m = len(listStr)
+	n = len(str)
+	setStrings = set()
+	#add each listStr into set
+	for i in range(m):
+		setStrings.add(listStr[i])
+	#keep track of longest length and longest string
+	longestLength = 0
+	longestString = ''
+	#go through the long str L times
+	for i in range(L):
+		curLength = 0
+		curString = ''
+		#loop through every L'th position starting from i
+		for j in range(i, (n-L), L):
+			#check if substring in set
+			if str[j:j+L] in setStrings:
+				curLength += 1
+				curString += str[j:(j+L)]
+				#set new longest string
+				if curLength > longestLength:
+					longestLength = curLength
+					longestString = curString
+			else:
+				curLength = 0
+				curString = ''
+	return longestString
+
+#tests:
+assert continguousString(['aaa', 'bbb', 'cac', 'cat'], 'aaacatcacdddcataaabbbcaczzz') == 'cataaabbbcac'
+
+
+
 
 
 

@@ -121,7 +121,19 @@ def removeDuplicates(s):
 #tests:
 # assert removeDuplicates('abcbdaaefgahbhhbhbcefdfde') == 'abcdefgh'
 
+"""
+9) You are given a set of m strings all of length L (call this set s), and one string of length n (call this string str).
+	(i.e. s = {'aaa', 'bbb', 'cac', 'cat'}, str = 'aaacatcacdddcataaabbbcaczzz'
+	In this case, m = 4, L = 3, and n = 27)
 
+	Find a contiguous permutation of all the words in s in a substring of str. 
+
+	So in the example, the substring 'cataaabbbcac' of str is a continguous permutation of all the words in s. 
+"""
+def continguousString(listStr, str):
+	pass
+#tests:
+# assert continguousString(['aaa', 'bbb', 'cac', 'cat'], 'aaacatcacdddcataaabbbcaczzz') == 'cataaabbbcac'
 
 
 
