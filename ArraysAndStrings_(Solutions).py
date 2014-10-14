@@ -278,6 +278,8 @@ assert removeDuplicates('abcbdaaefgahbhhbhbcefdfde') == 'abcdefgh'
 	Find a contiguous permutation of all the words in s in a substring of str. 
 
 	So in the example, the substring 'cataaabbbcac' of str is a continguous permutation of all the words in s. 
+
+	Efficiency: O(n + Ln) 
 """
 def continguousString(listStr, str):
 	L = len(listStr[0])
