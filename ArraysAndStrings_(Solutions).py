@@ -297,7 +297,7 @@ def continguousString(listStr, str):
 		curLength = 0
 		curString = ''
 		#loop through every L'th position starting from i
-		for j in range(i, (n-L), L):
+		for j in range(i, (n-L)+1, L):
 			#check if substring in set
 			if str[j:j+L] in setStrings:
 				curLength += 1
@@ -313,6 +313,7 @@ def continguousString(listStr, str):
 
 #tests:
 assert continguousString(['aaa', 'bbb', 'cac', 'cat'], 'aaacatcacdddcataaabbbcaczzz') == 'cataaabbbcac'
+assert continguousString(['ate', 'cat'], 'cateateate') == 'ateateate'
 
 
 

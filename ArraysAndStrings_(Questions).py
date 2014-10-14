@@ -136,7 +136,7 @@ def continguousString(listStr, str):
 	pass
 #tests:
 # assert continguousString(['aaa', 'bbb', 'cac', 'cat'], 'aaacatcacdddcataaabbbcaczzz') == 'cataaabbbcac'
-
+# assert continguousString(['ate', 'cat'], 'cateateate') == 'ateateate'
 
 
 
