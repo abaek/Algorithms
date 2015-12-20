@@ -1,14 +1,8 @@
-#-------------------------------------------------------------------------------
-# Title: 		Arrays and Strings
-# Author:      	Andy Baek
-# Created:     	12-09-2014
-# Copyright:   	(c) Andy Baek 2014
-# Sources:   	Cracking the Coding Interview (Gayle Laakmann)
-#-------------------------------------------------------------------------------
-
 """
-1) Implement merge-sort
+1) Implement merge-sort.
+	ex: mergesort([5, 1, 3]) -> [1, 3, 5]
 	Efficiency: O(nlogn)
+	Difficulty: 3
 """
 def mergesort(ar):
 	pass
@@ -23,8 +17,10 @@ def mergesort(ar):
 
 
 """
-2) Implement quick-sort	
+2) Implement quick-sort.
+	ex: quicksort([5, 1, 3]) -> [1, 3, 5]
 	Efficiency: O(nlogn)
+	Difficulty: 3
 """
 def quicksort(ar):
 	pass
@@ -39,8 +35,10 @@ def quicksort(ar):
 
 
 """
-3) Implement binary search
-	#Efficiency: O(logn)
+3) Implement binary search (returns True or False).
+	ex: binSearch([1, 3, 9], 9) -> True
+	Efficiency: O(logn)
+	Difficulty: 3 
 """
 def binSearch(ar, val):
 	pass
@@ -64,8 +62,10 @@ def binSearch(ar, val):
 
 
 """
-4) Determine if 2 arrays are rotated versions of each other
+4) Determine if 2 arrays are rotated versions of each other.
+	ex: rotatedArray([1, 2, 3, 4, 5], [3, 4, 5, 1, 2]) -> True
 	Efficiency: O(n^2)
+	Difficulty: 4
 """
 def rotatedArray(ar1, ar2):
 	pass
@@ -78,7 +78,9 @@ def rotatedArray(ar1, ar2):
 
 """
 5) Find all permutations of a string
+	ex: permutationsString("aab") -> ["aab", "aba", "baa"]
 	Efficiency: O(n!)
+	Difficulty: 4
 """
 def permutationsString(str):
 	pass
@@ -91,6 +93,7 @@ def permutationsString(str):
 
 """
 6) Reverse the words in a setence with one buffer space
+	ex: 
 	Efficiency: O(n)
 """
 def reverseSentence(sentence):
@@ -105,7 +108,7 @@ def reverseSentence(sentence):
 """
 def setZeroesGrid(grid):
 	pass
-#tests:
+# Tests:
 # assert setZeroesGrid([[1, 1, 0], [1, 1, 1], [1, 0, 1]]) == [[0, 0, 0], [1, 0, 0], [0, 0, 0]]
 # assert setZeroesGrid([[1, 1, 1], [1, 0, 1], [1, 1, 1]]) == [[1, 0, 1], [0, 0, 0], [1, 0, 1]]
 # assert setZeroesGrid([[0, 1, 1], [1, 1, 1], [1, 1, 0]]) == [[0, 0, 0], [0, 1, 0], [0, 0, 0]]
@@ -113,13 +116,13 @@ def setZeroesGrid(grid):
 # assert setZeroesGrid([[1, 1], [1, 1]]) == [[1, 1], [1, 1]]
 
 """
-8) Remove duplicates in a string with one buffer space
+8) Remove duplicates in an array with one buffer space
 	Efficiency: O(n^2)
 """
-def removeDuplicates(s):
+def removeDuplicates(ar):
     pass
 #tests:
-# assert removeDuplicates('abcbdaaefgahbhhbhbcefdfde') == 'abcdefgh'
+# assert removeDuplicates([1, 1, 2, 3, 1, 2, 4, 4, 1, 5]) == [1, 2, 3, 4, 5]
 
 """
 9) You are given a set of m strings all of length L (call this set s), and one string of length n (call this string str).
