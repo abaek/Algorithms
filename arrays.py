@@ -92,19 +92,13 @@ def permutationsString(str):
 
 
 """
-6) Reverse the words in a setence with one buffer space
-	ex: 
-	Efficiency: O(n)
-"""
-def reverseSentence(sentence):
-	pass
-#tests:
-# assert reverseSentence('hey how is it going everyone yo') == 'yo everyone going it is how hey'
-
-
-"""
-7) Write an algorithm such that if an element in an MxN matrix is 0, its entire row and column is set to 0.
-	Efficiency: O(MxN)
+6) Given a 2d array of ints, return a 2d array where if an element in the original array is 0,
+	then, its entire row and column become 0.
+	ex: setZeroesGrid([[1, 1, 0],  		 [[0, 0, 0],
+										 [1, 1, 1],   ->	[1, 1, 0],
+										 [1, 1, 1]]) 	 		[1, 1, 0]]
+	Efficiency: O(n^2)
+	Difficulty: 4
 """
 def setZeroesGrid(grid):
 	pass
@@ -116,30 +110,14 @@ def setZeroesGrid(grid):
 # assert setZeroesGrid([[1, 1], [1, 1]]) == [[1, 1], [1, 1]]
 
 """
-8) Remove duplicates in an array with one buffer space
+7) Remove duplicates in an array with O(1) buffer space (ie: don't create a new array)
+	ex: removeDuplicates([1, 1, 2, 3, 1, 2, 4, 4, 1, 5]) -> [1, 2, 3, 4, 5]
 	Efficiency: O(n^2)
+	Difficulty: 5
 """
 def removeDuplicates(ar):
     pass
 #tests:
+# assert removeDuplicates([]) == []
 # assert removeDuplicates([1, 1, 2, 3, 1, 2, 4, 4, 1, 5]) == [1, 2, 3, 4, 5]
-
-"""
-9) You are given a set of m strings all of length L (call this set s), and one string of length n (call this string str).
-	(i.e. s = {'aaa', 'bbb', 'cac', 'cat'}, str = 'aaacatcacdddcataaabbbcaczzz'
-	In this case, m = 4, L = 3, and n = 27)
-
-	Find a contiguous permutation of all the words in s in a substring of str. 
-
-	So in the example, the substring 'cataaabbbcac' of str is a continguous permutation of all the words in s.
-
-	Efficiency: O(n + Ln) 
-"""
-def continguousString(listStr, str):
-	pass
-#tests:
-# assert continguousString(['aaa', 'bbb', 'cac', 'cat'], 'aaacatcacdddcataaabbbcaczzz') == 'cataaabbbcac'
-# assert continguousString(['ate', 'cat'], 'cateateate') == 'ateateate'
-
-
-
+# assert removeDuplicates([1, 2, 3, 4, 5]) == [1, 2, 3, 4, 5]

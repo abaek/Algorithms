@@ -1,15 +1,10 @@
-#-------------------------------------------------------------------------------
-# Title: 		Dynamic Programming
-# Author:      	Andy Baek
-# Created:     	25-08-2014
-# Copyright:   	(c) Andy Baek 2014
-# Sources:   	http://people.cs.clemson.edu/~bcdean/dp_practice/
-#-------------------------------------------------------------------------------
+# DYNAMIC PROGRAMMING
 
 """
 1) Maximum Sum Continuous SubSequence
 	Given a sequence, find the maximum sum of a continuous (consecutive) subsequence
 	Efficiency: O(n)
+	Diffiulty: 7
 """
 def maxConsecutiveSum(ar):
 	pass
@@ -24,6 +19,7 @@ def maxConsecutiveSum(ar):
 	Given a sequence, find the length of the longest increasing subsequence, 
 	not necessarily consecutive terms.
 	Efficiency: O(n^2) or O(nlogn)
+	Diffculty: 8
 """
 def incSubSeq(ar):
 	pass
@@ -36,6 +32,7 @@ def incSubSeq(ar):
 	Given a list of coin denominations and an unlimited amount of each coin,
 	find the minimum number of coins to make exact change for a target value
 	Efficiency: O(n*m) n=#coins, m=change value
+	Difficulty: 7
 """
 def changeMaking(coins, target):
 	pass
@@ -52,6 +49,7 @@ def changeMaking(coins, target):
 	- You can rotate boxes in whichever way you like
 	- You can use multiple instances of the same box.
 	Efficiency: O(n^2)
+	Difficulty: 9
 """
 def boxStacking(boxes):
 	pass
@@ -66,6 +64,7 @@ def boxStacking(boxes):
     What is the maxmimum number of north-south pairs of cities you can connect such that
     such that no two bridges cross.
     Efficiency: O(n^2)
+    Difficulty: 10
 """
 def bridges(north, south):
 	pass
@@ -79,6 +78,7 @@ def bridges(north, south):
 	hold in a backpack of a certain max weight.
 	(ALLOWED DUPLICATE ITEMS)
 	Efficiency: O(n^m) : n=#items, m=max weight
+	Difficulty: 7
 """
 def backpackWithDup(items, target):
 	pass
@@ -95,6 +95,7 @@ def backpackWithDup(items, target):
 	hold in a backpack of a certain max weight.
 	(NO DUPLICATE ITEMS)
 	Efficiency: O(n*m) : n=#items, m=max weight
+	Difficulty: 8
 """
 def backpackNoDup(items, target):
 	pass
@@ -109,7 +110,8 @@ def backpackNoDup(items, target):
 	Given a set of n positive integers, partition these integers into two subsets 
 	such that you minimize |S1 - S2|, where S1 and S2 denote the sums of the elements 
 	in each of the two subsets. Return |S1 - S2|.
-	Efficiency: O(n^m) : n=# numbers, m=total sum
+	Efficiency: O(n*m) : n=# numbers, m=total sum
+	Difficulty: 9
 """
 def balancedPartition(ar):
 	pass
@@ -117,9 +119,10 @@ def balancedPartition(ar):
 # assert balancedPartition([9, 7, 3]) == 1
 
 """
-10) Given an array of numbers and a sum, list all
+9) Given an array of numbers and a sum, list all
 	permutations of the numbers that sum to the
 	given sum
+	Efficiency: O(n*target) : n = 3 numbers, 
 """
 def sumPerms(ar, target):
 	pass

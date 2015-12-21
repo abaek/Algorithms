@@ -1,11 +1,3 @@
-#-------------------------------------------------------------------------------
-# Title: 		Graphs and Trees
-# Author:      	Andy Baek
-# Created:     	12-09-2014
-# Copyright:   	(c) Andy Baek 2014
-# Sources:   	http://www.reddit.com/r/cscareerquestions/comments/1jov24/heres_how_to_prepare_for_tech_interviews/
-#-------------------------------------------------------------------------------
-
 """
 You are given these structures:
 """

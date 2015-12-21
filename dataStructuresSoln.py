@@ -1,16 +1,7 @@
-#-------------------------------------------------------------------------------
-# Title: 		Data Structures
-# Author:      	Andy Baek
-# Created:     	12-09-2014
-# Copyright:   	(c) Andy Baek 2014
-# Sources:   	Cracking the Coding Interview (Gayle Laakmann)
-#-------------------------------------------------------------------------------
-
-
 """
 You are given the following classes
 """
-class LinkedList():
+class Node():
 	def __init__(self, value=None, next=None):
 		self.value = value
 		self.next = next
@@ -28,7 +19,7 @@ class Stack():
 	def __init__(self, top=None):
 		self.top = top
 	def push(self, elem):
-		newLL = LinkedList(elem, self.top)
+		newLL = Node(elem, self.top)
 		self.top = newLL
 	def pop(self):
 		if self.top != None:
@@ -37,26 +28,48 @@ class Stack():
 			return topElem
 		else:
 			return None
+#tests
+s = Stack()
+s.push(4)
+s.push(5)
+assert s.pop() == 5
+s.push(6)
+assert s.pop() == 6
+assert s.pop() == 4
+assert s.pop() == None
 
 """
 2) Implement a queue with queue and dequeue functions
 """
 class Queue():
+	# First: newest element
 	def __init__(self, first=None, last=None):
 		self.first = first
 		self.last = last
 	def queue(self, elem):
-		newElem = LinkedList(elem)
-		if self.last == None:
-			self.last = newElem
-			self.first = newElem
-		else:
-			self.last.next = newElem
-	def dequeue(self):
+		newElem = Node(elem)
 		if self.first == None:
+			self.last = newElem
+		else:
+			self.first.next = newElem
+		self.first = newElem
+	def dequeue(self):
+		if self.last == None:
 			return None
 		else:
-			self.first = self.first.next
+			ret = self.last.value
+			self.last = self.last.next
+			return ret
+#tests:
+q = Queue()
+q.queue(4)
+q.queue(5)
+assert q.dequeue() == 4
+q.queue(6)
+assert q.dequeue() == 5
+assert q.dequeue() == 6
+assert q.dequeue() == None
+
 
 """
 3) Implement a Binary Min Heap using an array

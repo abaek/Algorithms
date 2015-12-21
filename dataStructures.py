@@ -1,16 +1,7 @@
-#-------------------------------------------------------------------------------
-# Title: 		Data Structures
-# Author:      	Andy Baek
-# Created:     	12-09-2014
-# Copyright:   	(c) Andy Baek 2014
-# Sources:   	Cracking the Coding Interview (Gayle Laakmann)
-#-------------------------------------------------------------------------------
-
-
 """
 You are given the following classes
 """
-class LinkedList():
+class Node():
 	def __init__(self, value=None, next=None):
 		self.value = value
 		self.next = next
@@ -23,6 +14,7 @@ class TreeNode:
 
 """
 1) Implement a stack with push and pop functions
+	Difficulty: 4
 """
 class Stack():
 	def __init__(self, top=None):
@@ -31,9 +23,19 @@ class Stack():
 		pass
 	def pop(self):
 		pass
+#tests:
+# s = Stack()
+# s.push(4)
+# s.push(5)
+# assert s.pop() == 5
+# s.push(6)
+# assert s.pop() == 6
+# assert s.pop() == 4
+# assert s.pop() == None
 
 """
 2) Implement a queue with queue and dequeue functions
+	Difficulty: 6
 """
 class Queue():
 	def __init__(self, first=None, last=None):
@@ -43,9 +45,21 @@ class Queue():
 		pass
 	def dequeue(self):
 		pass
+#tests:
+# q = Queue()
+# q.queue(4)
+# q.queue(5)
+# assert q.dequeue() == 4
+# q.queue(6)
+# assert q.dequeue() == 5
+# assert q.dequeue() == 6
+# assert q.dequeue() == None
+
 
 """
 3) Implement a Binary Min Heap using an array
+	(A Min Heap always pops off the smallest element)
+	Difficulty: 9
 """
 class Heap: #minHeap
 	def __init__(self, size=1):
@@ -53,8 +67,10 @@ class Heap: #minHeap
 		self.ar = [-1 for i in range(size)]
 	def createFromArray(self, ar):
 		pass
+	# Efficiency: log(n)
 	def push(self, val):
 		pass
+	# Efficiency: log(n)
 	def pop(self):
 		pass
 

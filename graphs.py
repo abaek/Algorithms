@@ -1,11 +1,3 @@
-#-------------------------------------------------------------------------------
-# Title: 		Graphs and Trees
-# Author:      	Andy Baek
-# Created:     	12-09-2014
-# Copyright:   	(c) Andy Baek 2014
-# Sources:   	http://www.reddit.com/r/cscareerquestions/comments/1jov24/heres_how_to_prepare_for_tech_interviews/
-#-------------------------------------------------------------------------------
-
 """
 You are given these structures:
 """
@@ -49,6 +41,7 @@ graph1 = Graph({1: [2, 5], 2: [3, 5], 3: [4], 4: [5], 5: []})
 
 """
 1) Given a graph, find all nodes of distance n away from a starting node using DFS
+	Difficulty: 6
 """
 def nodesAwayDFS(graph, start, distance):
 	pass
@@ -58,6 +51,7 @@ def nodesAwayDFS(graph, start, distance):
 
 """
 2) Given a graph, find all nodes of distance n away from a starting node using BFS
+	Difficulty: 7
 """
 def nodesAwayBFS(graph, start, distance):
 	pass
@@ -67,6 +61,7 @@ def nodesAwayBFS(graph, start, distance):
 
 """
 3) Find the nth largest number in a BST
+	Difficulty: 6
 """
 def nthLargest(bst, n):
 	pass
@@ -84,6 +79,7 @@ def nthLargest(bst, n):
 
 """
 4) Find the distance between 2 nodes in a graph 
+	Difficulty: 5
 """
 def distanceApart(graph, start, end):
 	pass
@@ -95,6 +91,7 @@ def distanceApart(graph, start, end):
 
 """
 5) Implement Djkastra's Algorithm
+	Difficulty: 10
 """
 def Dijkstra(graph, start, end):
 	pass

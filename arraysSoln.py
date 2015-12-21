@@ -1,6 +1,8 @@
 """
-1) Implement merge-sort
+1) Implement merge-sort.
+	ex: mergesort([5, 1, 3]) -> [1, 3, 5]
 	Efficiency: O(nlogn)
+	Difficulty: 3
 """
 def mergesort(ar):
 	if len(ar) <= 1:
@@ -45,8 +47,10 @@ assert mergesort([3, 5, 4, 1, 7, 9, 8, 6, 2, 0, 10]) == sorted([3, 5, 4, 1, 7, 9
 
 
 """
-2) Implement quick-sort	
+2) Implement quick-sort.
+	ex: quicksort([5, 1, 3]) -> [1, 3, 5]
 	Efficiency: O(nlogn)
+	Difficulty: 3
 """
 def quicksort(ar):
 	if len(ar) <= 1:
@@ -78,8 +82,10 @@ assert quicksort([3, 5, 4, 1, 7, 9, 8, 6, 2, 0, 10]) == sorted([3, 5, 4, 1, 7, 9
 
 
 """
-3) Implement binary search
-	#Efficiency: O(logn)
+3) Implement binary search (returns True or False).
+	ex: binSearch([1, 3, 9], 9) -> True
+	Efficiency: O(logn)
+	Difficulty: 3 
 """
 def binSearch(ar, val):
 	# low: lowest possible index
@@ -121,8 +127,10 @@ assert not binSearch([1, 3, 5], 6)
 
 
 """
-4) Determine if 2 arrays are rotated versions of each other
+4) Determine if 2 arrays are rotated versions of each other.
+	ex: rotatedArray([1, 2, 3, 4, 5], [3, 4, 5, 1, 2]) -> True
 	Efficiency: O(n^2)
+	Difficulty: 4
 """
 def rotatedArray(ar1, ar2):
 	if len(ar1) != len(ar2):
@@ -151,7 +159,9 @@ assert not rotatedArray([1, 2, 3, 4, 6, 6], [6, 5, 6, 1, 2, 3])
 
 """
 5) Find all permutations of a string
+	ex: permutationsString("aab") -> ["aab", "aba", "baa"]
 	Efficiency: O(n!)
+	Difficulty: 4
 """
 def permutationsString(str):
 	previousPerm = ['']
@@ -174,50 +184,16 @@ assert permutationsString('') == ['']
 
 
 """
-6) Reverse the words in a setence with one buffer space
-	Efficiency: O(n)
-"""
-def reverseSentence(sentence):
-	#reverse all characters in sentence
-	sentenceLength = len(sentence)
-	sentenceList = list(sentence)
-	for i in range(sentenceLength/2):
-		temp = sentenceList[i]
-		sentenceList[i] = sentenceList[sentenceLength - i - 1]
-		sentenceList[sentenceLength - i - 1] = temp
-	startWord = 0
-	#reverse each word
-	for curChar in range(sentenceLength):
-		if sentenceList[curChar] == ' ':
-			endWord = curChar - 1
-			for wordPos in range((endWord-startWord + 1)/2):
-				temp = sentenceList[startWord + wordPos]
-				sentenceList[startWord + wordPos] = sentenceList[endWord - wordPos]
-				sentenceList[endWord - wordPos] = temp
-			startWord = curChar + 1
-	#reverse last word
-	lastPos = sentenceLength - 1
-	while True:
-		if sentenceList[lastPos] == ' ':
-			lastWordStart = lastPos + 1
-			lastWordEnd = sentenceLength - 1
-			for i in range((lastWordEnd - lastWordStart + 1)/2):
-				temp = sentenceList[lastWordStart + i]
-				sentenceList[lastWordStart + i] = sentenceList[lastWordEnd - i]
-				sentenceList[lastWordEnd - i] = temp 
-			break
-		lastPos -= 1
-	return ''.join(sentenceList)
-#tests:
-assert reverseSentence('hey how is it going everyone yo') == 'yo everyone going it is how hey'
-
-
-"""
-7) Write an algorithm such that if an element in an MxN matrix is 0, its entire row and column is set to 0.
-	Efficiency: O(MxN)
+6) Given a 2d array of ints, return a 2d array where if an element in the original array is 0,
+	then, its entire row and column become 0.
+	ex: setZeroesGrid([[1, 1, 0],  		 [[0, 0, 0],
+										 [1, 1, 1],   ->	[1, 1, 0],
+										 [1, 1, 1]]) 	 		[1, 1, 0]]
+	Efficiency: O(n^2)
+	Difficulty: 4
 """
 def setZeroesGrid(grid):
-	#add rows anc columsn with 0's
+	#add rows anc columns with 0's
     zeroCol = set()
     zeroRow = set()
     for row in range(len(grid)):
@@ -241,8 +217,10 @@ assert setZeroesGrid([[0, 1], [1, 1]]) == [[0, 0], [0, 1]]
 assert setZeroesGrid([[1, 1], [1, 1]]) == [[1, 1], [1, 1]]
 
 """
-8) Remove duplicates in an array with one buffer space
+7) Remove duplicates in an array with one buffer space
+	ex: removeDuplicates([1, 1, 2, 3, 1, 2, 4, 4, 1, 5]) -> [1, 2, 3, 4, 5]
 	Efficiency: O(n^2)
+	Difficulty: 5
 """
 def removeDuplicates(ar):
 	curIndex = 1
@@ -258,87 +236,4 @@ def removeDuplicates(ar):
 	return ar
 #tests:
 assert removeDuplicates([1, 1, 2, 3, 1, 2, 4, 4, 1, 5]) == [1, 2, 3, 4, 5]
-
-
-
-"""
-9) You are given a set of m strings all of length L (call this set s), and one string of length n (call this string str).
-	(i.e. s = {'aaa', 'bbb', 'cac', 'cat'}, str = 'aaacatcacdddcataaabbbcaczzz'
-	In this case, m = 4, L = 3, and n = 27)
-
-	Find a contiguous permutation of all the words in s in a substring of str. 
-
-	So in the example, the substring 'cataaabbbcac' of str is a continguous permutation of all the words in s. 
-
-	Efficiency: O(n + Ln) 
-"""
-# def continguousString(listStr, str):
-# 	L = len(listStr[0])
-# 	m = len(listStr)
-# 	n = len(str)
-# 	lastPossibleStartPos = n-(L*m)
-# 	setStrings = set(listStr)
-# 	#go through the long str L times
-# 	for i in range(L):
-# 		curSet = setStrings.copy()
-# 		curString = ''
-# 		#loop through every L'th position starting from i
-# 		for j in range(i, lastPossibleStartPos+1, L):
-# 			#check if substring in set
-# 			checkedString = str[j:j+L]
-# 			if checkedString in curSet:
-# 				curSet.remove(checkedString)
-# 				curString += checkedString
-# 				#if set is empty
-# 				if not list(curSet):
-# 					return curString
-# 			else:
-# 				curSet = setStrings.copy()
-# 				curString = ''
-
-# #tests:
-# assert continguousString(['aaa', 'bbb', 'cac', 'cat'], 'aaacatcacdddcataaabbbcaczzz') == 'cataaabbbcac'
-# assert continguousString(['ate', 'cat'], 'cateatecatate') == 'ateateate'
-# assert continguousString(['aa', 'bb', 'cc'], 'aabbaaccaa') == 'bbaacc'
-
-
-
-def continguousString(listStr, str):
-	L = len(listStr[0])
-	m = len(listStr)
-	n = len(str)
-	lastPossibleStartPos = n-(L*m)
-	lastStartWord = n-L
-	setStrings = set(listStr)
-	#go through the long str L times
-	for i in range(L):
-		curSet = setStrings.copy()
-		curString = ''
-		#loop through every L'th position starting from i
-		for j in range(i, lastStartWord+1, L):
-			#check if substring in set
-			checkedString = str[j:j+L]
-			if checkedString in curSet:
-				curSet.remove(checkedString)
-				curString += checkedString
-				print 'yolo: ', curString
-				#if set is empty
-				if not list(curSet):
-					return curString
-			else:
-				if j+L > lastPossibleStartPos:
-					break
-				curSet = setStrings.copy()
-				curString = ''
-
-#tests:
-# print continguousString(['aaa', 'bbb', 'cac', 'cat'], 'aaacatcacdddcataaabbbcaczzz') 
-# print continguousString(['ate', 'cat'], 'cateatecatate')
-# print continguousString(['aa', 'bb', 'cc'], 'aabbaaccaa')
-# print continguousString(['aaaa', 'bbbb', 'cccc'], 'ajasbdjasbdhjbjbbbbccccaaaa')
-
-
-
-
-
 
