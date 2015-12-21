@@ -18,14 +18,13 @@ Please let me know if you find any issues or would like the methods better to be
 Topics Covered
 --------
 Problems cover the following topics:
-- Arrays and Strings
+- Arrays
 - Dynamic Programming
-- Graphs and Trees
+- Graphs
 - Bit Manipulation
 - Data Structures
   - Stacks
   - Queues
-  - Linked Lists
   - Heaps
 
 Sources
